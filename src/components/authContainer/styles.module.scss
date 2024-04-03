@@ -1,0 +1,147 @@
+.authBg {
+  background-blend-mode: hue;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.side {
+  .imageSection {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .im {
+      width: 80%;
+      margin-left: 3rem;
+
+      .logo {
+        height: auto;
+        margin-bottom: 125px;
+      }
+
+      .authImg {
+        height: auto;
+        max-width: 560px;
+        margin-left: -1.3rem;
+      }
+    }
+  }
+
+  .container {
+    padding-top: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    height: 100%;
+    width: 50%;
+    margin-right: 0;
+    overflow: auto;
+    border-left: 20px solid rgba(84, 95, 125, 0.01);
+    border-bottom: 20px solid rgba(84, 95, 125, 0.01);
+    border-radius: 30px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  .contentSec {
+    width: 100%;
+  }
+
+  .img {
+    width: 46%;
+    margin-left: auto;
+    display: block;
+    margin-top: 90px;
+    height: auto;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  text-align: center;
+
+  .container {
+    max-width: 400px;
+    width: 100%;
+
+    .icon {
+      margin-bottom: 1rem;
+      width: 72px;
+      display: inline-block;
+    }
+
+    .ttl {
+      font-size: var(--heading-2);
+      color: var(--text-main);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .txt {
+      font-size: 14px;
+      margin-bottom: 2.5rem;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .side {
+    .imageSection {
+      .im {
+        width: 80%;
+        margin-left: -2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .authBg {
+    background: transparent;
+  }
+
+  .side {
+    .img {
+      display: none;
+    }
+
+    .imageSection {
+      display: none;
+    }
+
+    .container {
+      width: 100%;
+      padding-top: 6rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  .center {
+    .container {
+      .ttl {
+        font-size: var(--heading-3);
+      }
+
+      .txt {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}

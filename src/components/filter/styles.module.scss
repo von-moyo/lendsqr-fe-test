@@ -1,0 +1,79 @@
+.sort {
+  color: var(--text-main);
+  font-weight: 500;
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  margin-top: 5px;
+}
+
+.sortList {
+  border: var(--border-1);
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+  width: fit-content;
+  position: absolute;
+  background: var(--bg-main);
+  // top: 115%;
+  padding: 20px 20px 0px 20px;
+  min-width: 280px;
+  margin: 15px 0px 0px -100px;
+
+  .buttons {
+    display: flex;
+    gap: 20px;
+
+    .btn {
+      width: 100%;
+      margin-bottom: 20px;
+      font-weight: 400;
+      background: #39CDCC;
+      color: #fff;
+    }
+
+    .resetBtn {
+      border: 1px solid rgba(84, 95, 125, 1);
+      color: rgba(84, 95, 125, 1);
+      background: #fff;
+    }
+  }
+
+  &__ttl {
+    margin-bottom: 12px;
+  }
+
+  &__items {
+    label {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 0px 6px 8px 6px;
+    }
+  }
+}
+
+.filterInput {
+  border: 1px solid rgba(33, 63, 125, 0.2) !important;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.dateInput {
+  background-image: url('../../assets/icons/calendarIcon.svg');
+  background-position: calc(100% - 20px) center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.dateInput::-webkit-datetime-edit,
+.dateInput::-webkit-inner-spin-button,
+.dateInput::-webkit-clear-button,
+.dateInput::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.dateInput::before {
+  content: "Date";
+  color: rgba(84, 95, 125, 0.7);
+}

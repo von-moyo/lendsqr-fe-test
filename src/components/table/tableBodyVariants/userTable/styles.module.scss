@@ -1,0 +1,72 @@
+.dropdownIcon {
+  width: 22px;
+  margin-right: 12px;
+}
+
+.dropdownIcon path {
+  fill: #000;
+}
+
+.status {
+  font-weight: 500;
+
+  &.unverified {
+    color: #f3aa1c;
+  }
+
+  &.suspended {
+    color: #f03738;
+  }
+
+  &.verified {
+    color: #3cc13b;
+  }
+}
+
+.account {
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-left: 10px;
+    width: 16px;
+  }
+}
+
+.email {
+  text-transform: lowercase;
+
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 10px;
+    width: 16px;
+    min-width: 16px;
+  }
+}
+
+.tableBodyRow * {
+  word-break: break-all;
+}
+
+.inactive {
+  background: rgba(84, 95, 125, 0.06);
+  color: rgba(84, 95, 125, 1);
+}
+
+.active {
+  background: rgba(57, 205, 98, 0.06);
+  color: rgba(57, 205, 98, 1);
+}
+
+.pending {
+  background: rgba(233, 178, 0, 0.1);
+  color: rgba(233, 178, 0, 1);
+
+}
+
+.blacklisted {
+  background: rgba(228, 3, 59, 0.1);
+  color: rgba(228, 3, 59, 1);
+}

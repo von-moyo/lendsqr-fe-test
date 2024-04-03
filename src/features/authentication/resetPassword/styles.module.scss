@@ -1,0 +1,31 @@
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 20px 0px 40px 0px;
+  border-radius: 50%;
+}
+.checkbox {
+  border-radius: 50%;
+}
+.checkboxContainer {
+  display: flex;
+  gap: 8px;
+  margin: 5px 0px;
+}
+.submitBtn {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.backBtn {
+  width: 100%;
+  font-weight: 600;
+
+  svg {
+    margin-right: 12px;
+
+    path {
+      fill: var(--brand-accent);
+    }
+  }
+}

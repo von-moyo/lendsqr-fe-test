@@ -1,0 +1,49 @@
+.center {
+  margin: auto;
+  max-width: 400px;
+  width: 100%;
+}
+
+.header {
+  h2 {
+    color: rgba(21, 63, 125, 1);
+    font-size: var(--heading-2);
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  p {
+    color: rgba(84, 95, 125, 0.9);
+    font-size: var(--body-text);
+    font-weight: 400;
+    padding: 15px 0px 50px 0px;
+    font-size: 20px;
+  }
+}
+
+.info {
+  font-size: 12px;
+  padding-bottom: 15px;
+}
+
+.btn {
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: 400;
+  background: #39CDCC;
+  border-color: #39CDCC;
+  color: #fff;
+}
+
+.foot {
+  padding: 0px;
+  text-align: center;
+  font-size: var(--body-text);
+  font-weight: 400;
+}
+
+.blue {
+  color: rgba(84, 95, 125, 0.5);
+  font-weight: 300;
+  padding: 8px 0 25px 0;
+}
