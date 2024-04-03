@@ -1,6 +1,6 @@
 import * as React from "react";
-import styles from "./styles.module.css";
-import { OrganizationIcon } from "assets";
+import styles from "./styles.module.scss";
+import { ChevronLeftIcon, ChevronRightIcon, OrganizationIcon } from "assets";
 import { CustomSelect } from "components/form";
 
 export interface PaginationProps {
@@ -11,6 +11,7 @@ export interface PaginationProps {
   pageLimit: number;
   hide?: boolean;
   name: string;
+  info: any[];
 }
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -21,8 +22,10 @@ const Pagination: React.FC<PaginationProps> = ({
   pageLimit,
   hide,
   name,
+  info,
 }) => {
   const onChange = (e: any) => handleChange(e.target.value);
+  console.log(currentPage, totalPages);
 
   const handleIncrease = () => {
     if (currentPage < totalPages) handleChange(currentPage + 1);
@@ -41,44 +44,33 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <section className={styles.pagination}>
       <p>
-        Showing{" "}
+        Showing
         <CustomSelect
-          onChange={() => {}}
+          parentClassName={styles.parent}
+          inputClass={styles.select}
+          onChange={onChange}
           validatorMessage={""}
           name={""}
-          placeholder={start.toString()}
+          placeholder={totalCount.toString()}
           label={""}
-          options={[]}
-          value={"undefined"}
-        />{" "}
-        - {end} out of {totalCount}
+          options={info}
+          value={totalCount.toString()}
+        />
+        out of {totalCount}
       </p>
       <div className={styles.inputBox}>
-        <input
-          onChange={onChange}
-          value={currentPage}
-          className={styles.input}
-          type="number"
-          max={totalPages}
-          min={1}
-          disabled={currentPage >= totalPages || currentPage <= 1}
-        />
-        <span>
-          <OrganizationIcon
-            onClick={handleIncrease}
-            role="button"
-            className={`${styles.up} ${
-              currentPage >= totalPages ? styles.disabled : ""
-            }`}
-          />
-          <OrganizationIcon
-            onClick={handleDecrease}
-            role="button"
-            className={`${styles.down} ${
-              currentPage <= 1 ? styles.disabled : ""
-            }`}
-          />
-        </span>
+        <section className={styles.icon}>
+          <ChevronLeftIcon onClick={handleDecrease} className={styles.btn} />
+        </section>
+        <div className={styles.current}>{currentPage}</div>
+        <div>{currentPage + 1}</div>
+        <div>{currentPage + 2}</div>
+        <div>...</div>
+        <div>{currentPage + 14}</div>
+        <div>{currentPage + 15}</div>
+        <section className={styles.icon}>
+          <ChevronRightIcon onClick={handleIncrease} className={styles.btn} />
+        </section>
       </div>
     </section>
   );

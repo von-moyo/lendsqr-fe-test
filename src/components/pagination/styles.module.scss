@@ -3,15 +3,61 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 2rem;
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.parent {
+  margin-bottom: 0px;
+}
+
+.select [class*="formSelect__control"] {
+  min-height: unset;
+  margin-top: 0;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  background: rgba(33, 63, 125, 0.1);
+  font-size: 14px;
+}
+
+.select [class*="formSelect__placeholder"] {
+  color: rgba(33, 63, 125, 1);
+  font-weight: 700;
 }
 
 .inputBox {
-  border: 1px solid #1f1d1e;
   padding: 6px 10px;
-  border-radius: 6px;
-  width: 72px;
   height: 46px;
   display: flex;
+  align-items: center;
+  gap: 15px;
+
+  .current {
+    color: rgba(84, 95, 125, 1);
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 5px;
+    background: rgba(33, 63, 125, 0.1);
+    border-radius: 4px;
+  }
+
+  div {
+    color: rgba(84, 95, 125, 0.6);
+  }
+}
+
+
+.btn {
+  cursor: pointer;
 }
 
 .input {
@@ -41,16 +87,20 @@
   justify-content: space-between;
   margin-left: 4px;
 }
+
 .inputBox span svg {
   width: 18px;
   padding: 4px;
 }
+
 .inputBox span svg path {
   fill: var(--black);
 }
+
 .down {
   transform: rotate(180deg);
 }
+
 .disabled {
   cursor: not-allowed;
   opacity: 0.6;

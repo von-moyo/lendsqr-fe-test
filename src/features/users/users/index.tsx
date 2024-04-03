@@ -31,6 +31,8 @@ const tableHeaderTitles: TableHeaderItemProps[] = [
 
 interface UsersProps {
   handleView: (id: number) => void;
+  blacklist: (id: number) => void;
+  activate: (id: number) => void;
   users: UserTableItem[];
   handleFilter: (data: any) => void;
   handleSearch: (data: any) => void;
@@ -41,6 +43,7 @@ interface UsersProps {
     current: number;
     count: number;
     limit: number;
+    info: any[];
   };
   role: {
     label?: any;
@@ -52,9 +55,12 @@ const UsersUI: React.FC<UsersProps> = ({
   role,
   searchTerm,
   handleView,
+  blacklist,
+  activate,
   users,
   pagination,
 }) => {
+  console.log(pagination.total)
   const miniCards = [
     {
       id: 1,
@@ -99,6 +105,9 @@ const UsersUI: React.FC<UsersProps> = ({
         tableBody={
           <UserTable
             tableBodyItems={users}
+            view={handleView}
+            blacklist={blacklist}
+            activate={activate}
             tableBodyRowClassName={styles.tableBodyItem}
             tableBodyStatus={styles.tableBodyStatus}
             statusItem={styles.statusItem}
@@ -121,6 +130,7 @@ const UsersUI: React.FC<UsersProps> = ({
         }}
       />
       <Pagination
+        info={pagination.info}
         currentPage={pagination.current}
         totalPages={pagination.total}
         handleChange={pagination.handleChange}

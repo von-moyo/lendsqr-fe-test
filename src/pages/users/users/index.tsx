@@ -99,9 +99,42 @@ const Users = () => {
       status: "Pending",
     },
   ];
+  const newArray = [];
+
+  for (let i = 0; i < 50; i++) {
+    newArray.push(...usersArray);
+  }
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 10;
+  const totalUsers = newArray.length;
+  const totalPages = Math.ceil(totalUsers / usersPerPage);
+  console.log(currentPage, totalPages)
+  const paginatedUsers = newArray.slice(
+    (currentPage - 1) * usersPerPage,
+    currentPage * usersPerPage
+  );
+
+  const info = [];
+  for (let i = 1; i <= totalPages; i++) {
+    info.push({
+      label: i.toString(),
+      value: i.toString(),
+    });
+  }
+
   const navigate = useNavigate();
   const handleView = (id: number) => {
     navigate(Routes.user(id));
+  };
+  const handleBlacklisting = (id: number) => {
+    navigate(Routes.user(id));
+  };
+  const handleActivate = (id: number) => {
+    navigate(Routes.user(id));
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -109,16 +142,19 @@ const Users = () => {
       <Preloader loading={loading} />
       <UsersUI
         handleView={handleView}
-        users={usersArray}
+        blacklist={handleBlacklisting}
+        activate={handleActivate}
+        users={paginatedUsers}
         handleFilter={() => {}}
         handleSearch={() => {}}
         searchTerm={""}
         pagination={{
-          handleChange: () => {},
-          total: 0,
-          current: 0,
-          count: 0,
-          limit: 0,
+          handleChange: handlePageChange,
+          total: totalPages,
+          current: currentPage,
+          count: totalUsers,
+          limit: usersPerPage,
+          info: info,
         }}
         role={{
           label: undefined,

@@ -3,6 +3,10 @@
   color: rgba(33, 63, 125, 1);
 }
 
+* {
+  // border: 1px solid;
+}
+
 .backBtn {
   display: flex;
   align-items: center;
@@ -23,7 +27,7 @@
   margin-bottom: 2rem;
   margin-top: 5px;
 
-  &__heading {
+  .heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -56,17 +60,28 @@
     }
   }
 
-  &__content {
+  .content {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.03);
     gap: 1rem;
     background: #fff;
-    padding: 30px 0px 0px 30px;
+    padding: 30px 30px 0px 30px;
     border-radius: 5px;
     margin-bottom: 1rem;
 
     .first {
       display: flex;
       align-items: center;
+      margin-bottom: 50px;
+
+      .userIcon {
+        width: 95px;
+        height: 95px;
+        background: rgba(33, 63, 125, 0.16);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
       .name {
         display: flex;
@@ -91,8 +106,17 @@
         justify-content: center;
         border-left: 1px solid rgba(84, 95, 125, 0.2);
         border-right: 1px solid rgba(84, 95, 125, 0.2);
-        padding: 20px 3%;
+        padding: 18px 3%;
         margin: 0px 0;
+
+        p {
+          margin-bottom: 10px;
+        }
+
+        span {
+          display: flex;
+          justify-content: center;
+        }
       }
 
       .bank {
@@ -105,6 +129,7 @@
           color: rgba(33, 63, 125, 1);
           font-weight: 700;
           font-size: 22px;
+          margin-bottom: 10px;
 
           .fill {
             margin-right: 700px;
@@ -133,80 +158,73 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 
+
+      .active {
+        border-bottom: 2px solid rgba(57, 205, 204, 1);
+        cursor: pointer;
+        color: rgba(57, 205, 204, 1);
+      }
+
       span:hover,
       span:active,
       span:visited {
         border-bottom: 2px solid rgba(57, 205, 204, 1);
         cursor: pointer;
+        color: rgba(57, 205, 204, 1);
       }
-    }
 
-    .userIcon {
-      width: 95px;
-      height: 95px;
-      background: rgba(33, 63, 125, 0.16);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    div {
       span {
-        color: #a5a3a3;
-        margin-bottom: 4px;
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 16px;
+        text-align: center;
         display: block;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  .table {
+    padding: 30px 30px 0px 30px;
+    background: #fff;
+    border-radius: 5px;
+
+    .personal {
+      border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+      margin-bottom: 30px;
+
+      .head {
+        font-size: 16px;
+        margin-bottom: 30px;
       }
 
-      .email {
-        display: flex;
-        align-items: center;
+      .body {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
-        svg {
-          margin-left: 10px;
-          width: 16px;
-          min-width: 16px;
+        .name {
+          margin-bottom: 20px;
+
+          .subhead {
+            color: rgba(84, 95, 125, 0.7);
+            font-size: 11px;
+            margin-bottom: 10px;
+          }
+
+          p {
+            font-size: 16px;
+            color: rgba(84, 95, 125, 1);
+          }
         }
       }
+
+    }
+
+    .education {
+      .body {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
     }
   }
 
-}
-
-.description {
-  background: #fff;
-  padding: 1rem 12px;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-
-  span {
-    color: #a5a3a3;
-    margin-bottom: 4px;
-    display: block;
-  }
-}
-
-section.tableHeader,
-div.tableBodyItem {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 40px;
-  gap: 1rem;
-}
-
-.tableWrap {
-  min-width: 700px;
-}
-
-.image {
-  border-radius: 50%;
-  object-fit: contain;
-  background: #fafafa;
-  width: 40px;
-  height: 40px;
-}
-
-.imageSec {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 10px;
 }

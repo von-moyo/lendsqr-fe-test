@@ -23,6 +23,9 @@ interface TableBodyProps {
   tableBodyStatus?: string;
   statusItem?: string;
   statusColor?: string;
+  view: (id: any) => void;
+  blacklist: (id: any) => void;
+  activate: (id: any) => void;
 }
 
 const UserTable: React.FC<TableBodyProps> = ({
@@ -31,7 +34,10 @@ const UserTable: React.FC<TableBodyProps> = ({
   tableBodyRowClassName,
   tableBodyStatus,
   statusItem,
-  statusColor
+  statusColor,
+  view,
+  blacklist,
+  activate,
 }) => {
   console.log(tableBodyItems[0].status)
 
@@ -66,7 +72,11 @@ const UserTable: React.FC<TableBodyProps> = ({
               `}>
                 {item.status}
               </p>
-              <StatusCard submit={()=>{}} />
+              <StatusCard
+                submit={() => { view(item.id) }}
+                blacklist={() => { blacklist(item.id)} }
+                activate={() => { activate(item.id)} }
+              />
             </span>
           </TableBodyRow>
         ))}

@@ -15,13 +15,6 @@ interface UserProfileProps {
   firstName?: string;
   lastName?: string;
   email?: string;
-  role?: string;
-  dateOfBirth?: string;
-  emailVerified?: boolean;
-  address?: string;
-  city?: string;
-  country?: string;
-  phone?: string;
   idType?: string;
   profileStatus: string;
   idNumber?: string;
@@ -30,21 +23,6 @@ interface UserProfileProps {
   idAlbumDoc2?: string;
   businessID?: number;
   isVerified: boolean;
-  companyLogo?: string;
-  regName?: string;
-  regNumber?: string;
-  businessEmail?: string;
-  businessPhone?: string;
-  businessCountry?: string;
-  businessCity?: string;
-  displayName?: string;
-  desc?: string;
-  certificate?: string;
-  displayPhoto?: string;
-  bankCountry?: string;
-  bankName?: string;
-  accountName?: string;
-  accountNumber?: string;
   proofOfAddress?: string;
 }
 
@@ -72,13 +50,6 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
   firstName,
   lastName,
   email,
-  role,
-  dateOfBirth,
-  emailVerified,
-  address,
-  city,
-  country,
-  phone,
   idType,
   profileStatus,
   idNumber,
@@ -87,21 +58,6 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
   idAlbumDoc2,
   businessID,
   isVerified,
-  companyLogo,
-  regName,
-  regNumber,
-  businessEmail,
-  businessPhone,
-  businessCountry,
-  businessCity,
-  displayName,
-  desc,
-  certificate,
-  displayPhoto,
-  bankCountry,
-  bankName,
-  accountName,
-  accountNumber,
   proofOfAddress,
 }) => {
   const navigate = useNavigate();
@@ -130,18 +86,18 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
 
   const star = [
     {
-      type: "fill"
+      type: "fill",
     },
     {
-      type: "empty"
+      type: "empty",
     },
     {
-      type: "empty"
+      type: "empty",
     },
-  ]
+  ];
 
-  useEffect(() => { }, [profileStatus, isVerified]);
-  const [isActive, setIsActive] = useState(false);
+  useEffect(() => {}, [profileStatus, isVerified]);
+  const [isActive, setIsActive] = useState(true);
 
   return (
     <div className={styles.userProfile}>
@@ -156,7 +112,7 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
         Back to Users
       </Button>
       <section className={styles.section}>
-        <div className={styles.section__heading}>
+        <div className={styles.heading}>
           <div className={styles.profile}>
             <h1 className={styles.section__ttl}>User Details</h1>
           </div>
@@ -177,23 +133,22 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
             </Button>
           </div>
         </div>
-        <div className={styles.section__content}>
+        <div className={styles.content}>
           <div className={styles.first}>
             <div className={styles.userIcon}>
               <UserIcon />
             </div>
             <div className={styles.name}>
               <p className={styles.username}>{firstName}Grace Effiom</p>
-              <p className={styles.userId} >{firstName}LSQFf587g90</p>
+              <p className={styles.userId}>{firstName}LSQFf587g90</p>
             </div>
             <div className={styles.tier}>
               <p>User's Tier</p>
               <span>
                 {star.map((item) => (
-                  <StarIcon className={`${styles[item.type]}`}/>
+                  <StarIcon className={`${styles[item.type]}`} />
                 ))}
               </span>
-              <p>{lastName}</p>
             </div>
             <div className={styles.bank}>
               <span>₦200,000.00</span>
@@ -201,50 +156,151 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
             </div>
           </div>
           <div className={styles.second}>
-            <span className={`${ isActive && styles.active}`} onClick={()=>{setIsActive(true)}}>General Details</span>
-            <span >Documents</span>
+            <span
+              className={`${isActive && styles.active}`}
+              onClick={() => {
+                setIsActive(true);
+              }}
+            >
+              General Details
+            </span>
+            <span>Documents</span>
             <span>Bank Details</span>
             <span>Loans</span>
             <span>Savings</span>
             <span>App and System</span>
           </div>
         </div>
-      </section>
-      <section className={styles.section}>
-        <div className={styles.section__content}>
-          <div>
-            <span>ID Type</span>
-            <p>{idType}</p>
-          </div>
-          <div>
-            <span>ID No</span>
-            <p>{idNumber}</p>
-          </div>
-          <div>
-            <span>Expiration Date</span>
-            <p>{idExpiryDate}</p>
-          </div>
-        </div>
-
-        <div className={styles.section__documents}>
-          {idAlbumDoc1 && (
-            <div>
-              <p>ID Front Page</p>
-              <a href={idAlbumDoc1}></a>
+        <div className={styles.table}>
+          <div className={styles.personal}>
+            <h2 className={styles.head}>Personal Information</h2>
+            <div className={styles.body}>
+              <div className={styles.name}>
+                <p className={styles.subhead}>FULL NAME</p>
+                <p>Grace Effiom</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>PHONE NUMBER</p>
+                <p>07060780922</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>EMAIL ADDRESS</p>
+                <p>grace@gmail.com</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>BVN</p>
+                <p>07060780922</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>GENDER</p>
+                <p>Female</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>MARITAL STATUS</p>
+                <p>Single</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>CHILDREN</p>
+                <p>None</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>TYPE OF RESIDENCE</p>
+                <p>Parent's Apartment</p>
+              </div>
             </div>
-          )}
-          {idAlbumDoc2 && (
-            <div>
-              <p>ID Back Page</p>
-              <a href={idAlbumDoc2}></a>
+          </div>
+          <div className={`${styles.personal} ${styles.education}`}>
+            <h2 className={styles.head}>Education and Emplpyment</h2>
+            <div className={styles.body}>
+              <div className={styles.name}>
+                <p className={styles.subhead}>LEVEL OF EDUCATION</p>
+                <p>B.Sc</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>EMPLOYMENT STATUS</p>
+                <p>Employed</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>SECTOR OF EMPLOYMENT</p>
+                <p>Fintech</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>DURATION OF EMPLOYMENT</p>
+                <p>2 Years</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>OFFICE EMAIL</p>
+                <p>grace@lendsqr.com</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>MONTHLY INCOME</p>
+                <p>₦200,000.00- ₦400,000.00</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>LOAN REPAYMENT</p>
+                <p>40,000</p>
+              </div>
             </div>
-          )}
-          {proofOfAddress && (
-            <div>
-              <p>Proof of Address</p>
-              <a href={proofOfAddress}></a>
+          </div>
+          <div className={styles.personal}>
+            <h2 className={styles.head}>Socials</h2>
+            <div className={styles.body}>
+              <div className={styles.name}>
+                <p className={styles.subhead}>TWITTER</p>
+                <p>@grace_effiom</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>FACEBOOK</p>
+                <p>Grace Effiom</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>INSTAGRAM</p>
+                <p>@grace_effiom</p>
+              </div>
             </div>
-          )}
+          </div>
+          <div className={styles.personal}>
+            <h2 className={styles.head}>Guarantor</h2>
+            <div className={styles.body}>
+              <div className={styles.name}>
+                <p className={styles.subhead}>FULL NAME</p>
+                <p>Debby Ogana</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>PHONE NUMBER</p>
+                <p>07060780922</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>EMAIL ADDRESS</p>
+                <p>debby@gmail.com</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>RELATIONSHIP</p>
+                <p>Sister</p>
+              </div>
+            </div>
+          </div>
+          <div className={styles.personal}>
+            <h2 className={styles.head}>Next of Kin</h2>
+            <div className={styles.body}>
+              <div className={styles.name}>
+                <p className={styles.subhead}>FULL NAME</p>
+                <p>Debby Ogana</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>PHONE NUMBER</p>
+                <p>07060780922</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>EMAIL ADDRESS</p>
+                <p>debby@gmail.com</p>
+              </div>
+              <div className={styles.name}>
+                <p className={styles.subhead}>RELATIONSHIP</p>
+                <p>Sister</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
