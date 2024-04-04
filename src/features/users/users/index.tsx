@@ -16,6 +16,8 @@ import {
   MainUsersIcon,
   SavingsUsersIcon,
 } from "assets";
+import MyContext from "context/search";
+import * as React from "react";
 
 const tableHeaderTitles: TableHeaderItemProps[] = [
   {
@@ -48,9 +50,11 @@ const UsersUI: React.FC<UsersProps> = ({
   handleView,
   blacklist,
   activate,
-  users,
+  users: usersList,
   pagination,
 }) => {
+  const { text } =  React.useContext(MyContext);
+  
   const miniCards = [
     {
       id: 1,
@@ -77,6 +81,9 @@ const UsersUI: React.FC<UsersProps> = ({
       Icon: SavingsUsersIcon,
     },
   ];
+
+  const users = usersList.filter(user => user.name.toLowerCase().includes(text.toLowerCase()));
+  
   return (
     <div className={styles.users}>
       <h1 className={styles.ttl}>Users</h1>
