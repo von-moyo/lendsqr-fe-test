@@ -104,13 +104,10 @@ for (let i = 0; i < 50; i++) {
 }
 
 const Users = () => {
-  const searchArray = localStorage.getItem("currentSearch");
-  // console.log(searchArray);
+  const [users, setUsers] = useState<UserTableItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
-  const totalUsers =
-    // searchArray !== [] ? searchArray.length :
-    newArray.length;
+  const totalUsers = users.length;
   const totalPages = Math.ceil(totalUsers / usersPerPage);
   const paginatedUsers = newArray.slice(
     (currentPage - 1) * usersPerPage,
@@ -140,9 +137,6 @@ const Users = () => {
     setCurrentPage(page);
   };
 
-  const [users, setUsers] = useState<UserTableItem[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-
   useEffect(() => {
     const fetchData = () => {
       axios
@@ -159,14 +153,13 @@ const Users = () => {
           const userList: UserTableItem[] = userResults.map((user: any) => ({
             id: user.id,
             organization: "",
-						name: user.profile.name,
-						email: user.email,
-						type: user.role.toLowerCase(),
-						dateCreated: new Date(user.created_at).toLocaleDateString(),
-						status: user.status.toLowerCase(),
-						verifiedBusiness: user.business_verified,
-					}));
-					setUsers(userList);
+            name: user.profile.name,
+            email: user.email,
+            phoneNumber: user.phoneNumber || "",
+            dateCreated: new Date(user.updatedAt).toLocaleDateString(),
+            status: user.status.toLowerCase() || "",
+          }));
+          setUsers(userList);
           // setUsers(userResults);
           console.log(userResults);
         })
