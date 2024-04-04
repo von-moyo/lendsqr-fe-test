@@ -16,7 +16,7 @@ import {
   MainUsersIcon,
   SavingsUsersIcon,
 } from "assets";
-import MyContext from "context/search";
+import { MyContext } from "context/search";
 import * as React from "react";
 
 const tableHeaderTitles: TableHeaderItemProps[] = [
