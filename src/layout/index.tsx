@@ -33,6 +33,7 @@ import { Link } from "react-router-dom";
 import { Routes } from "router/routes";
 import styles from "./styles.module.scss";
 import { useState } from "react";
+import MyContext from "context/search";
 
 interface SidebarType {
   active: customerPages;
@@ -336,9 +337,11 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
   };
 
   const [searchArray, setSearchArray] = useState<any[]>([]);
+  const {text, setText} = React.useContext(MyContext)
 
   const handleSearch = (s: string) => {
     setSearchTerm(s);
+    setText(s);
     // const currentSearch = newArray.filter(
     //   ({ organization, email, name }) =>
     //     organization.toLowerCase().includes(s?.toLowerCase()) ||
