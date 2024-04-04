@@ -33,7 +33,7 @@ import { Link } from "react-router-dom";
 import { Routes } from "router/routes";
 import styles from "./styles.module.scss";
 import { useState } from "react";
-import MyContext from "context/search";
+import { MyContext } from "context/search";
 
 interface SidebarType {
   active: customerPages;
