@@ -1,5 +1,5 @@
 .sort {
-  color: rgba(84, 95, 125, 1);
+  color: var(--text-other);
   font-weight: 500;
   box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
   margin-top: 5px;
@@ -30,7 +30,7 @@
       .fill {
         path {
           fill: #fff;
-          stroke: rgba(84, 95, 125, 1);
+          stroke: var(--text-other);
           stroke-width: 1;
         }
       }

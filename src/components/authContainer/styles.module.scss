@@ -101,12 +101,22 @@
   }
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1200px) {
   .side {
     .imageSection {
       .im {
         width: 80%;
-        margin-left: -2rem;
+        margin-left: -4rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1060px) {
+  .side {
+    .imageSection {
+      .im {
+        width: 80%;
+        margin-left: -5rem;
       }
     }
   }

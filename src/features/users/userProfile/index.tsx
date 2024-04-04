@@ -61,28 +61,6 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
   proofOfAddress,
 }) => {
   const navigate = useNavigate();
-  const suspendData: any = {
-    email: email,
-  };
-  const unsuspendData: any = {
-    email: email,
-  };
-
-  const handleClick = () => {
-    if (profileStatus === "VERIFIED") {
-      handleSuspend(suspendData);
-    } else if (profileStatus === "SUSPENDED") {
-      handleUnsuspend(unsuspendData);
-    } else if (profileStatus === "UNVERIFIED") {
-      handleVerifyUser(id);
-    }
-  };
-
-  const handleBusiness = () => {
-    if (!isVerified) {
-      handleVerifyBusiness(businessID);
-    }
-  };
 
   const star = [
     {
@@ -96,7 +74,6 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
     },
   ];
 
-  useEffect(() => {}, [profileStatus, isVerified]);
   const [isActive, setIsActive] = useState(true);
 
   return (
@@ -120,14 +97,14 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
             <Button
               className={`${styles.blacklistBtn}`}
               type="primary"
-              onClick={handleClick}
+              onClick={() => {}}
             >
               BLACKLIST USER
             </Button>
             <Button
               className={`${styles.activeBtn}`}
               type="primary"
-              onClick={handleClick}
+              onClick={() => {}}
             >
               ACTIVATE USER
             </Button>
@@ -155,20 +132,22 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
               <p className={styles.email}>9912345678/Providus Bank</p>
             </div>
           </div>
-          <div className={styles.second}>
-            <span
-              className={`${isActive && styles.active}`}
-              onClick={() => {
-                setIsActive(true);
-              }}
-            >
-              General Details
-            </span>
-            <span>Documents</span>
-            <span>Bank Details</span>
-            <span>Loans</span>
-            <span>Savings</span>
-            <span>App and System</span>
+          <div className={styles.secondContainer}>
+            <div className={styles.second}>
+              <span
+                className={`${isActive && styles.active}`}
+                onClick={() => {
+                  setIsActive(true);
+                }}
+              >
+                General Details
+              </span>
+              <span>Documents</span>
+              <span>Bank Details</span>
+              <span>Loans</span>
+              <span>Savings</span>
+              <span>App and System</span>
+            </div>
           </div>
         </div>
         <div className={styles.table}>

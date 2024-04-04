@@ -33,11 +33,11 @@
       cursor: pointer;
 
       .usersHead {
-        font-size: var(--heading-3);
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 500;
         display: flex;
         justify-content: space-between;
-        color: var(--text-main);
+        color: var(--text-otherrs);
       }
 
       .usersNumber {
@@ -74,9 +74,9 @@
   section.tableHeader,
   div.tableBodyItem {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.7fr;
+    grid-template-columns: 0.8fr 0.8fr 1.2fr 0.9fr 1.2fr 1fr;
     gap: 1rem;
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .tableBodyStatus {
@@ -93,7 +93,7 @@
 
     .inactive {
       background: rgba(84, 95, 125, 0.06);
-      color: rgba(84, 95, 125, 1);
+      color: var(--text-other);
     }
 
     .active {
@@ -118,14 +118,64 @@
   }
 }
 
-@media screen and (max-width: 800px) {
-  .ttl {
-    padding-left: 1.5rem;
-    font-size: 20px;
+@media screen and (max-width: 1300px) {
+  .users {
+
+    section.tableHeader,
+    div.tableBodyItem {
+      display: grid;
+      grid-template-columns: 0.8fr 0.8fr 1fr 1fr 1.2fr 0.9fr;
+      gap: 1rem;
+      font-size: 10px;
+    }
   }
 
-  .ttl::before {
-    width: 10px;
-    height: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .users {
+    padding: 22px 2.1rem 0rem 2.1rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .users {
+
+    .ttl {
+      margin-bottom: 1.5rem;
+    }
+
+    section.tableHeader,
+    div.tableBodyItem {
+      grid-template-columns: 0.8fr 0.8fr 1fr 0.8fr 1.2fr 1fr;
+
+    }
+
+    .miniCard {
+      width: 100%;
+      margin: 24px 0px 40px 0px;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+
+    }
+
+    .ttl {
+      font-size: 20px;
+    }
+
+    .ttl::before {
+      width: 10px;
+      height: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .users {
+    .miniCard {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
   }
 }

@@ -117,6 +117,7 @@ const UsersUI: React.FC<UsersProps> = ({
           tableContainerClassName: styles.tableWrap,
           tableHeaderClassName: styles.tableHeader,
           tableHeaderItemClassName: styles.tableHeaderItem,
+          statusClass: styles.statusClass
         }}
         emptyTable={{
           show: users.length === 0,

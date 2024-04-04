@@ -8,10 +8,10 @@
 }
 .label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   background: transparent;
   padding: 0;
-  color: rgba(84, 95, 125, 1);
+  color: var(--text-other);
   margin-bottom: 0px;
 }
 .message {

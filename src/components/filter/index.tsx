@@ -37,25 +37,22 @@ const optionTypeSchema = yup.object({
   label: yup.string().required(),
   value: yup.string().required(),
 });
-const phoneRegExp = /^[0-9]{10}$/;
 
-const filterSchema = yup
-  .object({
-    organization: optionTypeSchema,
-    username: yup.string(),
-    email: yup.string().email("Enter a valid email").required(),
-    date: yup.string(),
-    phoneNumber: yup.string().matches(phoneRegExp, "Phone number is not valid"),
-    status: optionTypeSchema,
-  })
-  .required();
+const filterSchema = yup.object({
+  organization: optionTypeSchema,
+  username: yup.string(),
+  email: yup.string().email("Enter a valid email").required(),
+  date: yup.string(),
+  phoneNumber: yup.string(),
+  status: optionTypeSchema,
+});
 
 export interface FilterProps {
   className?: string;
   submit: (data: FilterDetails) => void;
 }
 
-const Filter: React.FC<FilterProps> = ({ submit }) => {
+const Filter: React.FC<FilterProps> = ({ submit, className }) => {
   const {
     register,
     handleSubmit,
@@ -79,6 +76,24 @@ const Filter: React.FC<FilterProps> = ({ submit }) => {
       value: "draft",
     },
   ];
+  const status: OptionType[] = [
+    {
+      label: "Active",
+      value: "Active",
+    },
+    {
+      label: "Inactive",
+      value: "Inactive",
+    },
+    {
+      label: "Pending",
+      value: "Pending",
+    },
+    {
+      label: "Blacklisted",
+      value: "Blacklisted",
+    },
+  ];
   const dropdownRef = useRef(null);
   useClickOutside(dropdownRef, () => setList(false));
 
@@ -95,7 +110,7 @@ const Filter: React.FC<FilterProps> = ({ submit }) => {
   console.log(show);
 
   return (
-    <div ref={dropdownRef} className={`${styles.sort} ${""}`}>
+    <div ref={dropdownRef} className={`${styles.sort}`}>
       <div
         onClick={() => setList(!show)}
         role="button"
@@ -105,7 +120,7 @@ const Filter: React.FC<FilterProps> = ({ submit }) => {
       </div>
 
       {show && (
-        <div  className={styles.sortList}>
+        <div className={`${className} ${styles.sortList}`}>
           {show ? (
             <form className={styles.sortList__items}>
               <CustomSelect
@@ -119,6 +134,7 @@ const Filter: React.FC<FilterProps> = ({ submit }) => {
                 value={watch("organization")}
                 options={sort}
                 inputClass={styles.selectClass}
+                parentClassName={styles.parent}
               />
               <Input
                 label="Username"
@@ -130,6 +146,7 @@ const Filter: React.FC<FilterProps> = ({ submit }) => {
                 register={register}
                 value={watch("username")}
                 className={styles.filterInput}
+                parentClassName={styles.parent}
               />
               <Input
                 label="Email"
@@ -141,6 +158,7 @@ const Filter: React.FC<FilterProps> = ({ submit }) => {
                 register={register}
                 value={watch("email")}
                 className={styles.filterInput}
+                parentClassName={styles.parent}
               />
               <Input
                 label="Date"
@@ -152,6 +170,7 @@ const Filter: React.FC<FilterProps> = ({ submit }) => {
                 register={register}
                 value={watch("date")}
                 className={`${styles.filterInput} ${styles.dateInput}`}
+                parentClassName={styles.parent}
               />
               <Input
                 label="Phone Number"
@@ -163,6 +182,7 @@ const Filter: React.FC<FilterProps> = ({ submit }) => {
                 register={register}
                 value={watch("phoneNumber")}
                 className={styles.filterInput}
+                parentClassName={styles.parent}
               />
               <CustomSelect
                 onChange={(val) => setValue("status", val)}
@@ -173,8 +193,9 @@ const Filter: React.FC<FilterProps> = ({ submit }) => {
                 placeholder={"Select"}
                 label={"Status"}
                 value={watch("status")}
-                options={sort}
+                options={status}
                 inputClass={styles.selectClass}
+                parentClassName={styles.parent}
               />
               <div className={styles.buttons}>
                 <Button

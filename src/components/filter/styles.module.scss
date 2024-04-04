@@ -30,8 +30,8 @@
     }
 
     .resetBtn {
-      border: 1px solid rgba(84, 95, 125, 1);
-      color: rgba(84, 95, 125, 1);
+      border: 1px solid var(--text-other);
+      color: var(--text-other);
       background: #fff;
     }
   }
@@ -57,6 +57,16 @@
   padding-bottom: 5px;
 }
 
+.filterInput::placeholder {
+  color: rgba(84, 95, 125, 0.7);
+  font-weight: 400;
+}
+
+.selectClass [class*="formSelect__placeholder"] {
+  color: rgba(84, 95, 125, 0.7);
+  font-weight: 400;
+}
+
 .dateInput {
   background-image: url('../../assets/icons/calendarIcon.svg');
   background-position: calc(100% - 20px) center;
@@ -76,4 +86,141 @@
 .dateInput::before {
   content: "Date";
   color: rgba(84, 95, 125, 0.7);
+}
+
+@media screen and (max-width: 1300px) {
+  .sort {
+    margin-top: 0px;
+  }
+
+  .sortList {
+    margin: 5px 0px 0px -90px;
+    padding: 15px 10px 0px 10px;
+    min-width: 200px;
+
+    .buttons {
+      margin-top: 20px;
+
+      .btn {
+        padding: 8px 20px;
+        // font-size: 12px;
+      }
+    }
+
+    .parent {
+      margin-bottom: 8px;
+
+      label {
+        font-size: 12px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  .filterInput {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 35px;
+  }
+
+  .filterInput::placeholder {
+    font-size: 12px;
+  }
+
+  .dateInput {
+    background-size: 15px;
+  }
+
+  .dateInput::before {
+    content: "Date";
+    font-size: 12px;
+  }
+
+  .selectClass [class*="formSelect__value-container"] {
+    padding: 0 0 0 1rem;
+  }
+
+  .selectClass [class*="formSelect__input-container"] {
+    height: 20px;
+  }
+
+  .selectClass [class*="formSelect__placeholder"] {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .sortList {
+    margin: 15px 0px 0px 0px;
+    left: 3rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .sort {
+    margin-top: 0px;
+  }
+
+  .sortList {
+    padding: 15px 10px 0px 10px;
+    min-width: 170px;
+
+    .buttons {
+      margin-top: 15px;
+
+      .btn {
+        padding: 5px 15px;
+        font-size: 12px;
+      }
+    }
+
+    .parent {
+      margin-bottom: 8px;
+
+      label {
+        font-size: 10px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  .filterInput {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 30px;
+    padding-left: 0.5rem;
+  }
+
+  .filterInput::placeholder {
+    font-size: 10px;
+  }
+
+  .dateInput {
+    background-size: 12px;
+  }
+
+  .dateInput::before {
+    content: "Date";
+    font-size: 10px;
+  }
+
+  .selectClass [class*="formSelect__value-container"] {
+    padding: 0 0 0 0.5rem;
+  }
+
+  .selectClass [class*="formSelect__input-container"] {
+    height: 20px;
+  }
+
+  .selectClass [class*="formSelect__placeholder"] {
+    font-size: 10px;
+  }
+
+  .sort {
+    div {
+      svg {
+        width: 12px;
+      }
+    }
+  }
 }

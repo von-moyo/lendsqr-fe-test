@@ -363,7 +363,7 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
             />
             <div className={styles.details}>
               <p className={styles.docs}>Docs</p>
-              <NotificationIcon />
+              <NotificationIcon className={styles.noti}/>
               <img
                 src={placeholderAvatar}
                 alt="avatar"

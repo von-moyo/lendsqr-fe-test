@@ -8,21 +8,26 @@
   scroll-behavior: smooth;
 }
 
-/* @font-face {
+@font-face {
   font-family: 'Avenir';
   font-weight: 300;
   src: url('./assets/fonts/AvenirNextLTPro-Regular.otf') format('opentype');
 }
 
+
 @font-face {
   font-family: 'Avenir';
   font-weight: 700;
   src: url('./assets/fonts/AvenirNextLTPro-Bold.otf') format('opentype');
-} */
+} 
 
 @font-face {
   font-family: 'WorkSans';
   src: url('./assets/fonts/worksans.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SFCompactText';
+  src: url('./assets/fonts/SFCompactText.ttf') format('truetype');
 }
 
 
@@ -38,13 +43,14 @@
   --blue-2: rgba(84, 95, 125, 0.4);
 
   /* Border */
-  --border-1: 1px solid rgba(84, 95, 125, 0.1);
+  --border-1: 1px solid rgba(33, 63, 125, 0.2);
   --border-image: 1px solid #8691a3;
 
   /* Text Colors */
-  --text-main: rgba(21, 63, 125, 1);
-  --text-secondary: rgba(84, 95, 125, 1);
-  --text-tetiary: #545F7D;
+  --text-main: rgba(33, 63, 125, 1);
+  --text-secondary: rgba(33, 63, 125, 0.7);
+  --text-tetiary: rgba(33, 63, 125, 0.6);
+  --text-other: rgba(84, 95, 125, 1);
 
   /* Background Colors */
   --bg-main: #ffffff;
@@ -68,15 +74,37 @@
 
 body {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: 'WorkSans', sans-serif;
+  font-family: 'WorkSans', sans-serif, 'SFCompactText';
   color: var(--text-secondary);
   font-size: var(--body-text);
   background: var(--bg-main);
 }
 
-code {
+body {
+  font-family: 'WorkSans', sans-serif;
+}
+div {
+  font-family: 'WorkSans', sans-serif;
+}
+p {
+  font-family: 'WorkSans', sans-serif;
+}
+section {
+  font-family: 'WorkSans', sans-serif;
+}
+span {
+  font-family: 'WorkSans', sans-serif;
+}
+h1 {
+  font-family: 'WorkSans', sans-serif;
+}
+h2 {
+  font-family: 'WorkSans', sans-serif;
+}
+form {
+  font-family: 'WorkSans', sans-serif;
+}
+label {
   font-family: 'WorkSans', sans-serif;
 }
 

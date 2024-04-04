@@ -8,10 +8,10 @@
 }
 .label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   background: transparent;
   padding: 0;
-  color: rgba(84, 95, 125, 1);
+  color: var(--text-other);
   margin-bottom: 10px;
 }
 .message {
@@ -77,6 +77,6 @@
   margin-right: 0.6rem;
 
   path {
-    fill: rgba(33, 63, 125, 0.6);
+    fill: var(--text-main);
   }
 }

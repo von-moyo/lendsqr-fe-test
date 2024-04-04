@@ -14,6 +14,7 @@ interface TableHeaderProps {
   tableHeadItemClassName?: string;
   tableHeaderClassName?: string;
   tableRowClassName?: string;
+  statusClass?: string;
 }
 
 /**
@@ -28,8 +29,9 @@ const TableHeader: React.FC<TableHeaderProps> = ({
   tableHeadItemClassName = "",
   tableHeaderClassName = "",
   tableRowClassName = "",
+  statusClass = "",
 }) => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
   return (
     <section className={`${styles.tableHeader} ${tableHeaderClassName}`}>
       {tableHeaderTitles.map((header, idx) => {
@@ -37,15 +39,17 @@ const TableHeader: React.FC<TableHeaderProps> = ({
         return (
           <div className={styles.tableHeaderStyle}>
             <span
-              className={tableHeadItemClassName}
+              className={` ${tableHeadItemClassName}`}
               key={`${header}${idx + 1}`}
             >
               {header.title}
             </span>
             <Icon
-              className={styles.filterIcon}
+              className={`${styles.filterIcon} ${
+                (header.title === "STATUS") && styles.statuss
+              }`}
               // show={show}
-              submit={() => { }}
+              submit={() => {}}
               // close={()=>{}}
             />
           </div>

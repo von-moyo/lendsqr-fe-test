@@ -7,6 +7,7 @@ interface AllCustomTableClasses {
   tableHeaderClassName?: string;
   tableHeaderItemClassName?: string;
   tableContainerClassName?: string;
+  statusClass?: string;
 }
 
 //  Table Props
@@ -39,6 +40,7 @@ const Table: React.FC<TableProps> = ({
     tableHeaderClassName = "",
     tableHeaderItemClassName = "",
     tableContainerClassName = "",
+    statusClass = ""
   } = customTableClasses || {};
 
   return (
@@ -53,6 +55,7 @@ const Table: React.FC<TableProps> = ({
                 tableHeaderClassName={tableHeaderClassName}
                 tableHeadItemClassName={tableHeaderItemClassName}
                 tableHeaderTitles={tableHeaderTitles}
+                statusClass={statusClass}
               />
             )}
             {tableBody}
