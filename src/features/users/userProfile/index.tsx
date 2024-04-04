@@ -122,8 +122,8 @@ const UserProfileUI: React.FC<UserProfileProps> = ({
             <div className={styles.tier}>
               <p>User's Tier</p>
               <span>
-                {star.map((item) => (
-                  <StarIcon className={`${styles[item.type]}`} />
+                {star.map((item, id) => (
+                  <StarIcon key={id} className={`${styles[item.type]}`} />
                 ))}
               </span>
             </div>

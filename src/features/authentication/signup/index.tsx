@@ -45,7 +45,6 @@ const SignupUI: React.FC<LoginProps> = ({ submit }) => {
 
   const onSubmit: SubmitHandler<LoginDetails> = (data) => {
     submit(data);
-    console.log(data)
     reset()
     navigate(Routes.users)
   };

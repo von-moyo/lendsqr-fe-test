@@ -32,7 +32,6 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { Routes } from "router/routes";
 import styles from "./styles.module.scss";
-import { newArray } from "pages";
 import { useState } from "react";
 
 interface SidebarType {
@@ -340,17 +339,16 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
 
   const handleSearch = (s: string) => {
     setSearchTerm(s);
-    const currentSearch = newArray.filter(
-      ({ organization, email, name }) =>
-        organization.toLowerCase().includes(s?.toLowerCase()) ||
-        email.toLowerCase().includes(s?.toLowerCase()) ||
-        name.toLowerCase().includes(s?.toLowerCase())
-    );
-    setSearchArray(currentSearch);
-    localStorage.setItem("currentSearch", JSON.stringify(currentSearch));
-    console.log(searchArray);
+    // const currentSearch = newArray.filter(
+    //   ({ organization, email, name }) =>
+    //     organization.toLowerCase().includes(s?.toLowerCase()) ||
+    //     email.toLowerCase().includes(s?.toLowerCase()) ||
+    //     name.toLowerCase().includes(s?.toLowerCase())
+    // );
+    // setSearchArray(currentSearch);
+    // localStorage.setItem("currentSearch", JSON.stringify(currentSearch));
+    console.log(s);
   };
-  console.log(searchArray);
 
   return (
     <>

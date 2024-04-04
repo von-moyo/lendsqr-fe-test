@@ -97,11 +97,6 @@ const usersArray: UserTableItem[] = [
     status: "Pending",
   },
 ];
-export const newArray: any[] = [];
-
-for (let i = 0; i < 50; i++) {
-  newArray.push(...usersArray);
-}
 
 const Users = () => {
   const [users, setUsers] = useState<UserTableItem[]>([]);
@@ -109,7 +104,7 @@ const Users = () => {
   const usersPerPage = 10;
   const totalUsers = users.length;
   const totalPages = Math.ceil(totalUsers / usersPerPage);
-  const paginatedUsers = newArray.slice(
+  const paginatedUsers = users.slice(
     (currentPage - 1) * usersPerPage,
     currentPage * usersPerPage
   );
@@ -150,22 +145,39 @@ const Users = () => {
         })
         .then((response) => {
           const userResults = response.data;
+          type optionType = {
+            year: "numeric" | "2-digit" | undefined;
+            month: "long";
+            day: "numeric";
+            hour: "numeric";
+            minute: "numeric";
+            second: "numeric";
+            hour12: true;
+          };
+          const options: optionType = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            hour12: true,
+          };
           const userList: UserTableItem[] = userResults.map((user: any) => ({
             id: user.id,
-            organization: "",
+            organization: user.organization,
             name: user.profile.name,
             email: user.email,
-            phoneNumber: user.phoneNumber || "",
-            dateCreated: new Date(user.updatedAt).toLocaleDateString(),
-            status: user.status.toLowerCase() || "",
+            phoneNumber: "09086465372",
+            dateCreated: new Intl.DateTimeFormat("en-US", options).format(
+              new Date(user.updatedAt)
+            ),
+            status: user.roles[0],
           }));
           setUsers(userList);
-          // setUsers(userResults);
-          console.log(userResults);
         })
         .catch((error) => console.log(error))
         .finally(() => {
-          console.log("fetched data");
         });
     };
 

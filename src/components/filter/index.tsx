@@ -103,7 +103,6 @@ const Filter: React.FC<FilterProps> = ({ submit, className }) => {
 
   const onSubmit: SubmitHandler<FilterDetails> = (data) => {
     submit(data);
-    console.log(data);
   };
 
   const handleReset = () => {
