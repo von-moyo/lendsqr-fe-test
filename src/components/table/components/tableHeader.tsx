@@ -37,7 +37,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({
       {tableHeaderTitles.map((header, idx) => {
         const Icon = header.Icon;
         return (
-          <div className={styles.tableHeaderStyle}>
+          <div className={styles.tableHeaderStyle} key={idx}>
             <span
               className={` ${tableHeadItemClassName}`}
               key={`${header}${idx + 1}`}

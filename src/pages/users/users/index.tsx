@@ -1,114 +1,117 @@
 import { UsersUI } from "features";
 import { Preloader, UserTableItem } from "components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "router/routes";
+import axios from "axios";
+
+const usersArray: UserTableItem[] = [
+  {
+    id: "10",
+    organization: "Lendsqr",
+    name: "Adekogbe",
+    email: "adedeji@lendsqr.com",
+    phoneNumber: "09074738293",
+    dateCreated: "May 15, 2020 10:00 AM",
+    status: "Inactive",
+  },
+  {
+    id: "10",
+    organization: "Irorun",
+    name: "Debby Ogana",
+    email: "debby2@irorun.com",
+    phoneNumber: "09074738293",
+    dateCreated: "April 30, 2020 10:00 AM",
+    status: "Pending",
+  },
+  {
+    id: "10",
+    organization: "Lendstar",
+    name: "Grace Effiom",
+    email: "grace@lendstar.com",
+    phoneNumber: "09074738293",
+    dateCreated: "April 30, 2020 10:00 AM",
+    status: "Blacklisted",
+  },
+  {
+    id: "10",
+    organization: "Lendsqr",
+    name: "Tosin Dokunmu",
+    email: "tosin@lendsqr.com",
+    phoneNumber: "09074738293",
+    dateCreated: "April 10, 2020 10:00 AM",
+    status: "Pending",
+  },
+  {
+    id: "10",
+    organization: "Lendstar",
+    name: "Grace Effiom",
+    email: "grace@lendstar.com",
+    phoneNumber: "09074738293",
+    dateCreated: "April 30, 2020 10:00 AM",
+    status: "Active",
+  },
+  {
+    id: "10",
+    organization: "Lendsqr",
+    name: "Tosin Dokunmu",
+    email: "tosin@lendstar.com",
+    phoneNumber: "09074738293",
+    dateCreated: "April 10, 2020 10:00 AM",
+    status: "Active",
+  },
+  {
+    id: "10",
+    organization: "Lendstar",
+    name: "Grace Effiom",
+    email: "grace@lendstar.com",
+    phoneNumber: "09074738293",
+    dateCreated: "April 30, 2020 10:00 AM",
+    status: "Blacklisted",
+  },
+  {
+    id: "10",
+    organization: "Lendsqr",
+    name: "Tosin Dokunmu",
+    email: "tosin@lendstar.com",
+    phoneNumber: "09074738293",
+    dateCreated: "April 10, 2020 10:00 AM",
+    status: "Inactive",
+  },
+  {
+    id: "10",
+    organization: "Lendstar",
+    name: "Grace Effiom",
+    email: "grace@lendstar.com",
+    phoneNumber: "09074738293",
+    dateCreated: "April 15, 2020 10:00 AM",
+    status: "Inactive",
+  },
+  {
+    id: "10",
+    organization: "Lendsqr",
+    name: "Adekogbe Florish",
+    email: "tosin@lendstar.com",
+    phoneNumber: "09074738293",
+    dateCreated: "April 15, 2020 10:00 AM",
+    status: "Pending",
+  },
+];
+export const newArray: any[] = [];
+
+for (let i = 0; i < 50; i++) {
+  newArray.push(...usersArray);
+}
 
 const Users = () => {
-  const [loading, setLoading] = useState(false);
-
-  const usersArray: UserTableItem[] = [
-    {
-      id: "10",
-      organization: "Lendsqr",
-      name: "Adekogbe",
-      email: "adedeji@lendsqr.com",
-      phoneNumber: "09074738293",
-      dateCreated: "May 15, 2020 10:00 AM",
-      status: "Inactive",
-    },
-    {
-      id: "10",
-      organization: "Irorun",
-      name: "Debby Ogana",
-      email: "debby2@irorun.com",
-      phoneNumber: "09074738293",
-      dateCreated: "April 30, 2020 10:00 AM",
-      status: "Pending",
-    },
-    {
-      id: "10",
-      organization: "Lendstar",
-      name: "Grace Effiom",
-      email: "grace@lendstar.com",
-      phoneNumber: "09074738293",
-      dateCreated: "April 30, 2020 10:00 AM",
-      status: "Blacklisted",
-    },
-    {
-      id: "10",
-      organization: "Lendsqr",
-      name: "Tosin Dokunmu",
-      email: "tosin@lendsqr.com",
-      phoneNumber: "09074738293",
-      dateCreated: "April 10, 2020 10:00 AM",
-      status: "Pending",
-    },
-    {
-      id: "10",
-      organization: "Lendstar",
-      name: "Grace Effiom",
-      email: "grace@lendstar.com",
-      phoneNumber: "09074738293",
-      dateCreated: "April 30, 2020 10:00 AM",
-      status: "Active",
-    },
-    {
-      id: "10",
-      organization: "Lendsqr",
-      name: "Tosin Dokunmu",
-      email: "tosin@lendstar.com",
-      phoneNumber: "09074738293",
-      dateCreated: "April 10, 2020 10:00 AM",
-      status: "Active",
-    },
-    {
-      id: "10",
-      organization: "Lendstar",
-      name: "Grace Effiom",
-      email: "grace@lendstar.com",
-      phoneNumber: "09074738293",
-      dateCreated: "April 30, 2020 10:00 AM",
-      status: "Blacklisted",
-    },
-    {
-      id: "10",
-      organization: "Lendsqr",
-      name: "Tosin Dokunmu",
-      email: "tosin@lendstar.com",
-      phoneNumber: "09074738293",
-      dateCreated: "April 10, 2020 10:00 AM",
-      status: "Inactive",
-    },
-    {
-      id: "10",
-      organization: "Lendstar",
-      name: "Grace Effiom",
-      email: "grace@lendstar.com",
-      phoneNumber: "09074738293",
-      dateCreated: "April 15, 2020 10:00 AM",
-      status: "Inactive",
-    },
-    {
-      id: "10",
-      organization: "Lendsqr",
-      name: "Adekogbe Florish",
-      email: "tosin@lendstar.com",
-      phoneNumber: "09074738293",
-      dateCreated: "April 15, 2020 10:00 AM",
-      status: "Pending",
-    },
-  ];
-  const newArray = [];
-
-  for (let i = 0; i < 50; i++) {
-    newArray.push(...usersArray);
-  }
+  const searchArray = localStorage.getItem("currentSearch");
+  // console.log(searchArray);
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
-  const totalUsers = newArray.length;
+  const totalUsers =
+    // searchArray !== [] ? searchArray.length :
+    newArray.length;
   const totalPages = Math.ceil(totalUsers / usersPerPage);
-  console.log(currentPage, totalPages);
   const paginatedUsers = newArray.slice(
     (currentPage - 1) * usersPerPage,
     currentPage * usersPerPage
@@ -137,17 +140,52 @@ const Users = () => {
     setCurrentPage(page);
   };
 
+  const [users, setUsers] = useState<UserTableItem[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const fetchData = () => {
+      axios
+        .get("/templates/yfAg_qoICtcr/data", {
+          baseURL: process.env.REACT_APP_API_BASE_URL,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem(
+              "lendsqrAdminAccess"
+            )}`,
+          },
+        })
+        .then((response) => {
+          const userResults = response.data;
+          const userList: UserTableItem[] = userResults.map((user: any) => ({
+            id: user.id,
+            organization: "",
+						name: user.profile.name,
+						email: user.email,
+						type: user.role.toLowerCase(),
+						dateCreated: new Date(user.created_at).toLocaleDateString(),
+						status: user.status.toLowerCase(),
+						verifiedBusiness: user.business_verified,
+					}));
+					setUsers(userList);
+          // setUsers(userResults);
+          console.log(userResults);
+        })
+        .catch((error) => console.log(error))
+        .finally(() => {
+          console.log("fetched data");
+        });
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
-      <Preloader loading={loading} />
       <UsersUI
         handleView={handleView}
         blacklist={handleBlacklisting}
         activate={handleActivate}
         users={paginatedUsers}
-        handleFilter={() => {}}
-        handleSearch={() => {}}
-        searchTerm={""}
         pagination={{
           handleChange: handlePageChange,
           total: totalPages,
@@ -155,10 +193,6 @@ const Users = () => {
           count: totalUsers,
           limit: usersPerPage,
           info: info,
-        }}
-        role={{
-          label: undefined,
-          value: undefined,
         }}
       />
     </>

@@ -74,38 +74,10 @@
 
 body {
   margin: 0;
-  font-family: 'WorkSans', sans-serif, 'SFCompactText';
+  font-family: 'WorkSans', sans-serif, 'SFCompactText', 'Avenir';
   color: var(--text-secondary);
   font-size: var(--body-text);
   background: var(--bg-main);
-}
-
-body {
-  font-family: 'WorkSans', sans-serif;
-}
-div {
-  font-family: 'WorkSans', sans-serif;
-}
-p {
-  font-family: 'WorkSans', sans-serif;
-}
-section {
-  font-family: 'WorkSans', sans-serif;
-}
-span {
-  font-family: 'WorkSans', sans-serif;
-}
-h1 {
-  font-family: 'WorkSans', sans-serif;
-}
-h2 {
-  font-family: 'WorkSans', sans-serif;
-}
-form {
-  font-family: 'WorkSans', sans-serif;
-}
-label {
-  font-family: 'WorkSans', sans-serif;
 }
 
 button,

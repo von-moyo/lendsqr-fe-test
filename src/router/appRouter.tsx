@@ -2,6 +2,7 @@ import { ScrollToTop } from "helpers";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { RouteBuilder, Routes as RouteList } from ".";
+import { newArray } from "pages";
 
 /**
  * MAIN ROUTER COMPONENT
@@ -27,7 +28,8 @@ const MainRouter: React.FC = () => {
             // Checks if a layout exists or not
             const PageComponent = Layout ? (
               <Layout {...props}>
-                <Element />
+                <Element
+                />
               </Layout>
             ) : (
               <Element />

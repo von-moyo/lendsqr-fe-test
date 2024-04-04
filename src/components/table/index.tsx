@@ -47,7 +47,7 @@ const Table: React.FC<TableProps> = ({
     <>
       {!emptyTable?.show ? (
         <section className={styles.tableWrapper} >
-          <table
+          <section
             className={`${styles.mainTableContainer} ${tableContainerClassName}`}
           >
             {!hideHeaders && (
@@ -59,7 +59,7 @@ const Table: React.FC<TableProps> = ({
               />
             )}
             {tableBody}
-          </table>
+          </section>
         </section>
       ) : (
         <>{emptyTable.element}</>

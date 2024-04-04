@@ -25,8 +25,6 @@ const Pagination: React.FC<PaginationProps> = ({
   info,
 }) => {
   const onChange = (e: any) => handleChange(e.target.value);
-  console.log(currentPage, totalPages);
-
   const handleIncrease = () => {
     if (currentPage < totalPages) handleChange(currentPage + 1);
   };
@@ -43,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <section className={styles.pagination}>
-      <p>
+      <div>
         Showing
         <CustomSelect
           parentClassName={styles.parent}
@@ -57,7 +55,7 @@ const Pagination: React.FC<PaginationProps> = ({
           value={totalCount.toString()}
         />
         out of {totalCount}
-      </p>
+      </div>
       <div className={styles.inputBox}>
         <section className={styles.icon}>
           <ChevronLeftIcon onClick={handleDecrease} className={styles.btn} />

@@ -7,11 +7,13 @@ interface SearchProps {
   value: string;
   placeholder: string;
   handleChange: (val: string) => void;
+  submit: (val: string) => void;
 }
 
 const Search: React.FC<SearchProps> = ({
   className,
   handleChange,
+  submit,
   value,
   placeholder,
 }) => {
@@ -28,7 +30,7 @@ const Search: React.FC<SearchProps> = ({
       <div className={styles.icon}>
         <Button
           type="primary"
-          onClick={() => { }}
+          onClick={()=>{submit(value)}}
           className={styles.btn}
         >
           <SearchIcon/>

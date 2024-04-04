@@ -31,6 +31,7 @@ export interface RouteBuilderItem extends LayoutRouteProps {
  * just fulfill all the necessary props needed by the RouteBuilder item. Ciao!
  *
  */
+
 export const RouteBuilder: RouteBuilderItem[] = [
   {
     path: Routes.home,

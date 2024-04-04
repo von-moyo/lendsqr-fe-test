@@ -34,9 +34,6 @@ interface UsersProps {
   blacklist: (id: number) => void;
   activate: (id: number) => void;
   users: UserTableItem[];
-  handleFilter: (data: any) => void;
-  handleSearch: (data: any) => void;
-  searchTerm: string;
   pagination: {
     handleChange: (page: any) => void;
     total: number;
@@ -45,22 +42,15 @@ interface UsersProps {
     limit: number;
     info: any[];
   };
-  role: {
-    label?: any;
-    value?: any;
-  };
 }
 
 const UsersUI: React.FC<UsersProps> = ({
-  role,
-  searchTerm,
   handleView,
   blacklist,
   activate,
   users,
   pagination,
 }) => {
-  console.log(pagination.total)
   const miniCards = [
     {
       id: 1,
@@ -117,7 +107,7 @@ const UsersUI: React.FC<UsersProps> = ({
           tableContainerClassName: styles.tableWrap,
           tableHeaderClassName: styles.tableHeader,
           tableHeaderItemClassName: styles.tableHeaderItem,
-          statusClass: styles.statusClass
+          statusClass: styles.statusClass,
         }}
         emptyTable={{
           show: users.length === 0,

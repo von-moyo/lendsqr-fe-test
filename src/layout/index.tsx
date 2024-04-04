@@ -32,6 +32,8 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { Routes } from "router/routes";
 import styles from "./styles.module.scss";
+import { newArray } from "pages";
+import { useState } from "react";
 
 interface SidebarType {
   active: customerPages;
@@ -320,18 +322,35 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
     },
   ];
 
-  const [showMenu, setShowMenu] = React.useState(false);
-  const [showLogout, setShowLogout] = React.useState(false);
-  const [searchTerm, setSearchTerm] = React.useState("");
+  const [showMenu, setShowMenu] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const menuRef = React.useRef(null);
 
   const onHide = () => {
     setShowMenu(false);
   };
-  const handleSearch = (e: string) => {
-    onHide()
+
+  const onSearch = (searchTerm: string) => {
+    return searchTerm;
   };
+
+  const [searchArray, setSearchArray] = useState<any[]>([]);
+
+  const handleSearch = (s: string) => {
+    setSearchTerm(s);
+    const currentSearch = newArray.filter(
+      ({ organization, email, name }) =>
+        organization.toLowerCase().includes(s?.toLowerCase()) ||
+        email.toLowerCase().includes(s?.toLowerCase()) ||
+        name.toLowerCase().includes(s?.toLowerCase())
+    );
+    setSearchArray(currentSearch);
+    localStorage.setItem("currentSearch", JSON.stringify(currentSearch));
+    console.log(searchArray);
+  };
+  console.log(searchArray);
 
   return (
     <>
@@ -357,13 +376,14 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
               className={styles.search}
               value={searchTerm}
               placeholder={"Search for anything"}
+              submit={onSearch}
               handleChange={(e) => {
                 handleSearch(e);
               }}
             />
             <div className={styles.details}>
               <p className={styles.docs}>Docs</p>
-              <NotificationIcon className={styles.noti}/>
+              <NotificationIcon className={styles.noti} />
               <img
                 src={placeholderAvatar}
                 alt="avatar"

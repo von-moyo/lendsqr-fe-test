@@ -13,15 +13,15 @@ interface FilterDetails {
   username?: string;
   date?: string;
   phoneNumber?: string;
-  organization: {
-    label: string;
-    value: string;
+  organization?: {
+    label?: string;
+    value?: string;
   };
-  status: {
-    label: string;
-    value: string;
+  status?: {
+    label?: string;
+    value?: string;
   };
-  email: string;
+  email?: string;
 }
 
 const initFilterData: FilterDetails = {
@@ -33,18 +33,23 @@ const initFilterData: FilterDetails = {
   status: { label: "", value: "" },
 };
 
-const optionTypeSchema = yup.object({
-  label: yup.string().required(),
-  value: yup.string().required(),
-});
-
 const filterSchema = yup.object({
-  organization: optionTypeSchema,
+  organization: yup
+    .object({
+      label: yup.string(),
+      value: yup.string(),
+    })
+    .optional(),
   username: yup.string(),
-  email: yup.string().email("Enter a valid email").required(),
+  email: yup.string().email("Enter a valid email"),
   date: yup.string(),
   phoneNumber: yup.string(),
-  status: optionTypeSchema,
+  status: yup
+    .object({
+      label: yup.string(),
+      value: yup.string(),
+    })
+    .optional(),
 });
 
 export interface FilterProps {
@@ -65,7 +70,6 @@ const Filter: React.FC<FilterProps> = ({ submit, className }) => {
     defaultValues: initFilterData,
   });
   const [show, setList] = useState(false);
-  const [show2, setShow2] = useState(false);
   const sort: OptionType[] = [
     {
       label: "active",
@@ -107,8 +111,6 @@ const Filter: React.FC<FilterProps> = ({ submit, className }) => {
     submit(initFilterData);
   };
 
-  console.log(show);
-
   return (
     <div ref={dropdownRef} className={`${styles.sort}`}>
       <div
@@ -125,9 +127,7 @@ const Filter: React.FC<FilterProps> = ({ submit, className }) => {
             <form className={styles.sortList__items}>
               <CustomSelect
                 onChange={(val) => setValue("organization", val)}
-                validatorMessage={
-                  errors?.organization?.value?.message?.toString() ?? ""
-                }
+                validatorMessage={""}
                 name={"sector"}
                 placeholder={"Select"}
                 label={"Organization"}
@@ -153,7 +153,7 @@ const Filter: React.FC<FilterProps> = ({ submit, className }) => {
                 placeholder="Email"
                 type="email"
                 required
-                validatorMessage={errors.email?.message}
+                validatorMessage={""}
                 name="email"
                 register={register}
                 value={watch("email")}
@@ -186,9 +186,7 @@ const Filter: React.FC<FilterProps> = ({ submit, className }) => {
               />
               <CustomSelect
                 onChange={(val) => setValue("status", val)}
-                validatorMessage={
-                  errors?.status?.value?.message?.toString() ?? ""
-                }
+                validatorMessage={""}
                 name={"sector"}
                 placeholder={"Select"}
                 label={"Status"}

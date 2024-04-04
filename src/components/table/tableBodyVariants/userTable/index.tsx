@@ -1,5 +1,5 @@
 import * as React from "react";
-import {TableBody, TableBodyRow } from "../../components";
+import { TableBody, TableBodyRow } from "../../components";
 import styles from "./styles.module.scss";
 import { SelectIcon } from "assets";
 import { StatusCard } from "components/statusCard";
@@ -39,8 +39,6 @@ const UserTable: React.FC<TableBodyProps> = ({
   blacklist,
   activate,
 }) => {
-  console.log(tableBodyItems[0].status)
-
   return (
     <>
       <TableBody customClassName={`${styles.tableBody}`}>
@@ -57,25 +55,38 @@ const UserTable: React.FC<TableBodyProps> = ({
             <span className={tableBodyItemClassName}>{item.phoneNumber}</span>
             <span className={tableBodyItemClassName}>{item.dateCreated}</span>
             <span className={`${tableBodyItemClassName} ${tableBodyStatus}`}>
-              <p className={`
+              <p
+                className={`
               ${statusItem} 
               ${statusColor} 
               ${styles.status} 
               ${styles[item.status]}
               ${
-                item.status === "Inactive" ? styles.inactive
-                  : item.status === "Active" ? styles.active
-                    : item.status === "Pending" ? styles.pending
-                      : item.status === "Blacklisted" ? styles.blacklisted
-                        : ""
+                item.status === "Inactive"
+                  ? styles.inactive
+                  : item.status === "Active"
+                  ? styles.active
+                  : item.status === "Pending"
+                  ? styles.pending
+                  : item.status === "Blacklisted"
+                  ? styles.blacklisted
+                  : ""
               }
-              `}>
+              `}
+              >
                 {item.status}
               </p>
               <StatusCard
-                submit={() => { view(item.id) }}
-                blacklist={() => { blacklist(item.id)} }
-                activate={() => { activate(item.id)} }
+                className={styles.statusCard}
+                submit={() => {
+                  view(item.id);
+                }}
+                blacklist={() => {
+                  blacklist(item.id);
+                }}
+                activate={() => {
+                  activate(item.id);
+                }}
               />
             </span>
           </TableBodyRow>
