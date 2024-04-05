@@ -22,7 +22,7 @@ Axios interceptors provided a way to intercept and modify HTTP requests and resp
 Fetching And Populating Data In The Users Page
 I used Generics in TypeScript to type check the value of the returned data like this:
 
-\\\
+```
 
   const [users, setUsers] = useState<UserTableItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,8 +33,7 @@ I used Generics in TypeScript to type check the value of the returned data like 
     (currentPage - 1) * usersPerPage,
     currentPage * usersPerPage
   );
-  \\\
-  \\\
+  
   return (
     <>
       <Preloader loading={loading}/>
@@ -55,7 +54,7 @@ I used Generics in TypeScript to type check the value of the returned data like 
     </>
   );
 };
-\\\
+```
 This was implemented like this because the shape of the data coming from the API is unknown, hence Generics came in handy. The above code implies that paginatedUsers is a an array of objects gotten from the sliced data form users array.
 
 The returned data was later populated in the UI with a Custom Table component that uses the HTML table tag. This was used as the preferred method because HTML Tables allows for proper alignment of the kind of the design provided. Note that, this table is scrollable on mobile.
@@ -68,14 +67,17 @@ The pagination feature at the bottom of the table, was implemented by creating a
 
 Fetching Data And Populating In The Users  Page
 In the user page, I used index-signature to represent the data type of the return value from the API like this:
-\\\
- const [users, setUsers] = useState<UserTableItem[]>([]);
- \\\
+
+```
+
+  const [users, setUsers] = useState<UserTableItem[]>([]);
+  
+ ```
 This indicates that user is an object of properties whose key is a type of string and value is of type of any.
 
 I used Axios To Fetch The Details of All users
 
-    \\\
+    ```
       useEffect(() => {
     setLoading(true);
     const fetchData = () => {
@@ -133,7 +135,7 @@ I used Axios To Fetch The Details of All users
 
   }, []);
 
-    \\\
+    ```
 The algorithm First checks if the loading state is set to true or false to show the preloader component then the request is made and I am slicing the data to only get the key-value pairs I need. I am then setting the loading state to false after the request is made and updating my empty state to the sliced data.
 
 After this process is completed, data is then populated to the UI.
