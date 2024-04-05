@@ -5,100 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { Routes } from "router/routes";
 import axios from "axios";
 
-const usersArray: UserTableItem[] = [
-  {
-    id: "10",
-    organization: "Lendsqr",
-    name: "Adekogbe",
-    email: "adedeji@lendsqr.com",
-    phoneNumber: "09074738293",
-    dateCreated: "May 15, 2020 10:00 AM",
-    status: "Inactive",
-  },
-  {
-    id: "10",
-    organization: "Irorun",
-    name: "Debby Ogana",
-    email: "debby2@irorun.com",
-    phoneNumber: "09074738293",
-    dateCreated: "April 30, 2020 10:00 AM",
-    status: "Pending",
-  },
-  {
-    id: "10",
-    organization: "Lendstar",
-    name: "Grace Effiom",
-    email: "grace@lendstar.com",
-    phoneNumber: "09074738293",
-    dateCreated: "April 30, 2020 10:00 AM",
-    status: "Blacklisted",
-  },
-  {
-    id: "10",
-    organization: "Lendsqr",
-    name: "Tosin Dokunmu",
-    email: "tosin@lendsqr.com",
-    phoneNumber: "09074738293",
-    dateCreated: "April 10, 2020 10:00 AM",
-    status: "Pending",
-  },
-  {
-    id: "10",
-    organization: "Lendstar",
-    name: "Grace Effiom",
-    email: "grace@lendstar.com",
-    phoneNumber: "09074738293",
-    dateCreated: "April 30, 2020 10:00 AM",
-    status: "Active",
-  },
-  {
-    id: "10",
-    organization: "Lendsqr",
-    name: "Tosin Dokunmu",
-    email: "tosin@lendstar.com",
-    phoneNumber: "09074738293",
-    dateCreated: "April 10, 2020 10:00 AM",
-    status: "Active",
-  },
-  {
-    id: "10",
-    organization: "Lendstar",
-    name: "Grace Effiom",
-    email: "grace@lendstar.com",
-    phoneNumber: "09074738293",
-    dateCreated: "April 30, 2020 10:00 AM",
-    status: "Blacklisted",
-  },
-  {
-    id: "10",
-    organization: "Lendsqr",
-    name: "Tosin Dokunmu",
-    email: "tosin@lendstar.com",
-    phoneNumber: "09074738293",
-    dateCreated: "April 10, 2020 10:00 AM",
-    status: "Inactive",
-  },
-  {
-    id: "10",
-    organization: "Lendstar",
-    name: "Grace Effiom",
-    email: "grace@lendstar.com",
-    phoneNumber: "09074738293",
-    dateCreated: "April 15, 2020 10:00 AM",
-    status: "Inactive",
-  },
-  {
-    id: "10",
-    organization: "Lendsqr",
-    name: "Adekogbe Florish",
-    email: "tosin@lendstar.com",
-    phoneNumber: "09074738293",
-    dateCreated: "April 15, 2020 10:00 AM",
-    status: "Pending",
-  },
-];
-
 const Users = () => {
+  const [loading, setLoading] = useState(false)
   const [users, setUsers] = useState<UserTableItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
@@ -133,6 +41,7 @@ const Users = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = () => {
       axios
         .get("/templates/yfAg_qoICtcr/data", {
@@ -175,17 +84,22 @@ const Users = () => {
             status: user.roles[0],
           }));
           setUsers(userList);
+          setLoading(false)
         })
-        .catch((error) => console.log(error))
+        .catch((error) => {
+          console.log(error)
+        })
         .finally(() => {
         });
     };
 
     fetchData();
+
   }, []);
 
   return (
     <>
+      <Preloader loading={loading}/>
       <UsersUI
         handleView={handleView}
         blacklist={handleBlacklisting}

@@ -59,7 +59,7 @@ const LoginUI: React.FC<LoginProps> = ({ submit }) => {
       <AuthContainer type="side" className={`${styles.center}`}>
         <div className={styles.header}>
           <h2>Welcome!</h2>
-          <p>Enter details to login.</p>
+          <p data-testid="login">Enter details to login.</p>
         </div>
         <form>
           <Input
