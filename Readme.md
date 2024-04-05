@@ -1,4 +1,4 @@
-#Features and Functionalities
+# Features and Functionalities
 
 This documentation will guide you through the various features and functionalities of this web application, starting from the authentication page and walking you through each subsequent page until you reach the user details page. Each feature will be explained in detail, along with explanations for the decisions I made.
 
