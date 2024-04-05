@@ -33,6 +33,8 @@ I used Generics in TypeScript to type check the value of the returned data like 
     (currentPage - 1) * usersPerPage,
     currentPage * usersPerPage
   );
+  \\\
+  \\\
   return (
     <>
       <Preloader loading={loading}/>
