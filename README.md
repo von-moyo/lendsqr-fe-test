@@ -1,19 +1,24 @@
 #Features and Functionalities
+
 This documentation will guide you through the various features and functionalities of this web application, starting from the authentication page and walking you through each subsequent page until you reach the user details page. Each feature will be explained in detail, along with explanations for the decisions I made.
 
 #Login-Auth page
 Since an authentication page was provided, I decided to include an authentication feature. Since authentication was implemented, I also included protected routes feature - this enables only authenticated users to access subsequent pages, if not, they are redirected to the log in page.
 
 #Routing
+
 Almighty React-Router was used to implement routing feature.
 
 #Fetching Data
+
 I fetched data through out the applications with axios.
 
 Axios interceptors provided a way to intercept and modify HTTP requests and responses before they are handled by the application.
 
 #Authenticated Pages
+
 #Users Page
+
 Fetching And Populating Data In The Users Page
 I used Generics in TypeScript to type check the value of the returned data like this:
 
@@ -54,9 +59,11 @@ This was implemented like this because the shape of the data coming from the API
 The returned data was later populated in the UI with a Custom Table component that uses the HTML table tag. This was used as the preferred method because HTML Tables allows for proper alignment of the kind of the design provided. Note that, this table is scrollable on mobile.
 
 #Pagination Feature
+
 The pagination feature at the bottom of the table, was implemented by creating a custom funcitionality for seamless implementation and designed by your truly. I adde dthe functionality of buttons to view the data in groups of 10s by setting a variable called pageLimit to 10.
 
 #Users Page
+
 Fetching Data And Populating In The Users  Page
 In the user page, I used index-signature to represent the data type of the return value from the API like this:
 \\\
