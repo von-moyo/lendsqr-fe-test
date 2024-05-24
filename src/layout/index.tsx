@@ -342,14 +342,6 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
   const handleSearch = (s: string) => {
     setSearchTerm(s);
     setText(s);
-    // const currentSearch = newArray.filter(
-    //   ({ organization, email, name }) =>
-    //     organization.toLowerCase().includes(s?.toLowerCase()) ||
-    //     email.toLowerCase().includes(s?.toLowerCase()) ||
-    //     name.toLowerCase().includes(s?.toLowerCase())
-    // );
-    // setSearchArray(currentSearch);
-    // localStorage.setItem("currentSearch", JSON.stringify(currentSearch));
     console.log(s);
   };
 
