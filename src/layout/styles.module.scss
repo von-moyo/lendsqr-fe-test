@@ -291,7 +291,8 @@
     }
 
     .sideBar {
-      display: none;
+      margin-top: 70px;
+      height: calc(100% - 80px) !important;
     }
 
     .content {
