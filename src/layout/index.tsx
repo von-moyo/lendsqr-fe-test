@@ -26,6 +26,7 @@ import {
   AuditIcon,
   ReportsIcon,
   ChevronRightIcon,
+  HamBurgerIcon,
 } from "assets";
 import { Search } from "components";
 import * as React from "react";
@@ -305,38 +306,20 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
       type: "link",
       action: () => setShowMenu(true),
       Icon: AuditIcon,
-    },
-    {
-      active,
-      state: "Fees and Pricing",
-      type: "link",
-      action: () => setShowMenu(true),
-      Icon: FeesPricingIcon,
-    },
-    {
-      active,
-      state: "Audit Logs",
-      type: "link",
-      action: () => setShowMenu(true),
-      Icon: AuditIcon,
-    },
+    }
   ];
 
   const [showMenu, setShowMenu] = useState(false);
+  const [showHamburger, setShowHamburger] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const menuRef = React.useRef(null);
 
-  const onHide = () => {
-    setShowMenu(false);
-  };
-
   const onSearch = (searchTerm: string) => {
     return searchTerm;
   };
 
-  const [searchArray, setSearchArray] = useState<any[]>([]);
   const {text, setText} = React.useContext(MyContext)
 
   const handleSearch = (s: string) => {
@@ -348,7 +331,9 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
   return (
     <>
       <main className={styles.main}>
-        <nav className={`${styles.sideBar} ${showMenu ? styles.overLay : ""}`}>
+        <nav className={`${styles.sideBar} ${
+            showMenu ? styles.show : styles.none
+          }`}>
           <div className={styles.mobileNav}>
             <OrganizationIcon
               role="button"
@@ -387,6 +372,11 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
                 <DropdownIcon />
               </div>
             </div>
+
+            <HamBurgerIcon
+            onClick={() => setShowMenu(!showMenu)}
+            className={`${showMenu ? styles.rotate : styles.menuIcon} ${styles.showHamburger}`}
+          />
           </div>
         </header>
         <div className={styles.content}>{children}</div>

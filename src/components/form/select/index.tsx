@@ -16,6 +16,7 @@ interface CustomSelectProps {
   value: any;
   isMulti?: boolean;
   disabled?: boolean;
+  menuPlacement?: "auto" | "bottom" | "top";
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -32,6 +33,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   value,
   isMulti,
   disabled,
+  menuPlacement,
 }) => {
   return (
     <div
@@ -52,6 +54,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         value={value.value ? value : null}
         isMulti={isMulti}
         isDisabled={disabled}
+        menuPlacement={menuPlacement}
       />
       {validatorMessage && (
         <small className={styles.message}>{validatorMessage}</small>

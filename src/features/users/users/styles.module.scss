@@ -114,14 +114,20 @@
   }
 
   .tableWrap {
-    min-width: 700px;
+    min-width: 800px;
   }
 }
 
 @media screen and (max-width: 1300px) {
   .users {
 
-    section.tableHeader,
+    section.tableHeader {
+      display: grid;
+      grid-template-columns: 0.8fr 0.8fr 1fr 1fr 1.2fr 0.9fr;
+      gap: 1rem;
+      font-size: 12px;
+    }
+    
     div.tableBodyItem {
       display: grid;
       grid-template-columns: 0.8fr 0.8fr 1fr 1fr 1.2fr 0.9fr;
@@ -148,7 +154,10 @@
     section.tableHeader,
     div.tableBodyItem {
       grid-template-columns: 0.8fr 0.8fr 1fr 0.8fr 1.2fr 1fr;
+    }
 
+    section.tableHeader {
+      font-size: 12px;
     }
 
     .miniCard {

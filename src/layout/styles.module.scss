@@ -9,7 +9,7 @@
   .sideBar {
     margin-top: 100px;
     background: #fff;
-    height: 100vh;
+    height: calc(100% - 110px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -153,6 +153,10 @@
         }
       }
 
+      .showHamburger {
+        display: none;
+      }
+
       img {
         width: 40px;
         height: 40px;
@@ -171,6 +175,7 @@
     top: 100px;
     background: rgba(57, 205, 204, 0.06);
     z-index: -1;
+    height: 100vh;
   }
 
   .content::-webkit-scrollbar {
@@ -204,11 +209,29 @@
         .search {
           width: 250px;
         }
+        .showHamburger {
+          display: block;
+          width: 35px;
+          height: auto;
+          transition: transform 0.5s ease;
+        }
+        .rotate {
+          width: 35px;
+          height: auto;
+          transition: transform 0.5s ease;
+          transform: rotate(90deg);
+        }
       }
     }
 
     .sideBar {
-      display: none !important;
+      left: -286px;
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+
+    .show {
+      left: 0;
     }
 
     .content {

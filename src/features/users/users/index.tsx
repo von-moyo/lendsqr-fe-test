@@ -41,9 +41,8 @@ interface UsersProps {
     total: number;
     current: number;
     count: number;
-    limit: number;
-    info: any[];
   };
+  handleLimitChange: (newLimit: number) => void;
 }
 
 const UsersUI: React.FC<UsersProps> = ({
@@ -52,6 +51,7 @@ const UsersUI: React.FC<UsersProps> = ({
   activate,
   users: usersList,
   pagination,
+  handleLimitChange
 }) => {
   const { text } =  React.useContext(MyContext);
   
@@ -128,13 +128,12 @@ const UsersUI: React.FC<UsersProps> = ({
         }}
       />
       <Pagination
-        info={pagination.info}
         currentPage={pagination.current}
         totalPages={pagination.total}
         handleChange={pagination.handleChange}
         totalCount={pagination.count}
-        pageLimit={pagination.limit}
         name={"Users"}
+        onLimitChange={handleLimitChange}
       />
     </div>
   );

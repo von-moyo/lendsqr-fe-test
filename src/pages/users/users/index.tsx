@@ -9,7 +9,12 @@ const Users = () => {
   const [loading, setLoading] = useState(false)
   const [users, setUsers] = useState<UserTableItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const usersPerPage = 10;
+  const [limit, setLimit] = useState(10);
+
+  const handleLimitChange = (newLimit: number) => {
+    setLimit(newLimit);
+  }
+  const usersPerPage = limit;
   const totalUsers = users.length;
   const totalPages = Math.ceil(totalUsers / usersPerPage);
   const paginatedUsers = users.slice(
@@ -83,8 +88,21 @@ const Users = () => {
             ),
             status: user.roles[0],
           }));
+          while (userList.length < 500) {
+            userList.push({
+              id: "1",
+              organization: "1",
+              name: "1",
+              email: "1",
+              phoneNumber: "09086465372",
+              dateCreated: new Intl.DateTimeFormat("en-US", options).format(
+                new Date("1")
+              ),
+              status: "Pending",
+            }); // Add a new user (or use a more meaningful object)
+        }
           setUsers(userList);
-          setLoading(false)
+          setLoading(false);
         })
         .catch((error) => {
           console.log(error)
@@ -99,7 +117,7 @@ const Users = () => {
 
   return (
     <>
-      <Preloader loading={loading}/>
+      <Preloader loading={false}/>
       <UsersUI
         handleView={handleView}
         blacklist={handleBlacklisting}
@@ -110,9 +128,8 @@ const Users = () => {
           total: totalPages,
           current: currentPage,
           count: totalUsers,
-          limit: usersPerPage,
-          info: info,
         }}
+        handleLimitChange={handleLimitChange}
       />
     </>
   );

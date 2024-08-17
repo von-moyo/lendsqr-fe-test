@@ -38,6 +38,7 @@ import { ReactComponent as CalendarIcon } from "./calendarIcon.svg";
 import { ReactComponent as EyeIcon } from "./eyeIcon.svg";
 import { ReactComponent as BlacklistIcon } from "./blacklistIcon.svg";
 import { ReactComponent as ActivateIcon } from "./activateIcon.svg";
+import { ReactComponent as HamBurgerIcon } from "./hamburgerIcon.svg";
 
 export {
   OrganizationIcon,
@@ -79,5 +80,6 @@ export {
   CalendarIcon,
   EyeIcon,
   BlacklistIcon,
-  ActivateIcon
+  ActivateIcon,
+  HamBurgerIcon,
 };
